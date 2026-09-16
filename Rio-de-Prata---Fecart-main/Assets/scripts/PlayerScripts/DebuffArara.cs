@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine.InputSystem;
+using JetBrains.Annotations;
 
 public class DebuffArara : MonoBehaviour
 {
@@ -11,11 +12,10 @@ public class DebuffArara : MonoBehaviour
     private InputSystem_Actions inputSystem;
     private InputAction move;
     private Vector2 movimento;
-    private int velocidade = 5;
+    public int velocidade = 5;
 
     public bool podeVoar = true;
     public bool voando;
-    public bool isGrounded;
 
     private float cooldownAtual;
     public float cooldownMax = 5f;
@@ -23,7 +23,6 @@ public class DebuffArara : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     async Task Awake()
     {
-        isGrounded = andar.isGrounded;
         inputSystem = new InputSystem_Actions();
         move = inputSystem.Player.Move;
     }
@@ -42,47 +41,66 @@ public class DebuffArara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Contador();
         movimento = move.ReadValue<Vector2>();
-        StartCoroutine(VerificarPossibilidadeDeVoo());
-        if (!isGrounded && podeVoar) Voar();
-        else if (!podeVoar) Cair();
+        Contador();
+        StartCoroutine(VerificarPossibilidadeDeVoo());   
+    }
 
-        
+    private void FixedUpdate()
+    {
+        if (!andar.isGrounded && podeVoar) Voar();
+        else if (!podeVoar && voando) Cair();
+        print(cooldownAtual);
     }
 
     private void Voar()
     {
+        print("voando");
+        voando = true;
         rb.linearVelocity = movimento * velocidade;
     }
 
-    private void Cair()
+    public void Cair()
     {
-        rb.linearVelocity = new Vector2(movimento.x * velocidade, transform.position.y * -velocidade);
+        if (!voando) return;
+        print("Caindo");
+        rb.linearVelocity = new Vector2(movimento.x * velocidade, -1f * velocidade);
     }
 
     private IEnumerator VerificarPossibilidadeDeVoo()
     {
-        if (!isGrounded && cooldownAtual >= cooldownMax)
+        if (!andar.isGrounded && cooldownAtual >= cooldownMax)
         {
+            print("você não pode mais voar");
+            print(cooldownAtual);
             podeVoar = false;
+            cooldownAtual = cooldownMax;
+
         }
-        else if(isGrounded && !podeVoar && cooldownAtual == 0)
+        else if(andar.isGrounded && !podeVoar && cooldownAtual <= 0)
         {
+            print("agora você pode voar");
             podeVoar = true;
+            cooldownAtual = 0;
         }
         yield return new WaitForSeconds(intervaloDeVerificacao);
     }
 
     private void Contador()
     {
-        if(!isGrounded)
-        {
-            cooldownAtual += Time.deltaTime;
-        }
-        if(isGrounded && cooldownAtual == cooldownMax)
+        if (andar.isGrounded && !podeVoar)
         {
             cooldownAtual -= Time.deltaTime;
         }
+        if (!andar.isGrounded && podeVoar)
+        {
+            cooldownAtual += Time.deltaTime;
+        }
+    }
+
+    public void AraraNoChao()
+    {
+        voando = false;
+        if (podeVoar) cooldownAtual = 0;
     }
 }

@@ -1,26 +1,23 @@
-using System.Collections;
 using UnityEngine;
 
 public class TutorialAtivator : MonoBehaviour
 {
-    [SerializeField] TutorialManager tutorial;
+    [SerializeField] private TutorialManager tutorial;
+    private bool jaAtivou = false; // Trava para impedir múltiplas chamadas seguidas
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Tutorial"))
+        // Se já foi ativado, sai imediatamente e ignora as próximas colisões
+        if (jaAtivou) return;
+
+        // Verifica se o objeto que entrou tem a tag "Tutorial"
+        if (other.CompareTag("Tutorial"))
         {
-            print("trigger ativado no objeto:" + this.gameObject);
-            tutorial.IniciarTutorial();
-            StartCoroutine(Espera());
- 
-        }
-    }
+            jaAtivou = true; // Ativa a trava
+            Debug.Log("Gatilho detectado no objeto: " + this.gameObject.name);
 
-    private IEnumerator Espera()
-    {
-        Debug.Log("Waiting...");
-        yield return new WaitForSeconds(10f);
-        tutorial.FinalizarTutorial();
-        Debug.Log("2 seconds later!");
+            // Inicia o processo no gerenciador
+            tutorial.IniciarTutorial();
+        }
     }
 }

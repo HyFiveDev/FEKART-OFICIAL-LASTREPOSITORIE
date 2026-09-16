@@ -8,7 +8,7 @@ public class Andar : MonoBehaviour
     private InputAction jump;
 
     [SerializeField] private Rigidbody2D rb;
-    
+    [SerializeField] private DebuffArara arara;
 
     public float speed = 5f;
     public float jumpForce = 10f;
@@ -48,6 +48,7 @@ public class Andar : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground")) isGrounded = true;
+        arara.AraraNoChao();
     }
 
     private void OnCollisionExit2D(Collision2D collision)

@@ -1,3 +1,4 @@
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,9 +13,13 @@ public class Transforma : MonoBehaviour
     [SerializeField] private GameObject imagemArara;
     [SerializeField] private GameObject imagemMacaco;
     [SerializeField] private GameObject imagemHumano;
-    
+
+    [Header("Referencia de códigos")]
     [SerializeField] private FormaColisao Colisao;
-    
+    [SerializeField] private MonkeyClimb escalada;
+    [SerializeField] private DebuffArara voar;
+    private Rigidbody2D rb;
+
     [Header("Estado Atual")]
     // 1 = Humano
     // 2 = Arara
@@ -26,6 +31,7 @@ public class Transforma : MonoBehaviour
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         inputActions = new InputSystem_Actions();
     }
 
@@ -54,7 +60,10 @@ public class Transforma : MonoBehaviour
     private void VirarArara(InputAction.CallbackContext context)
     {
         if (transformacaoAtual == 2) return;
-        
+
+        escalada.DesagtivarEscalda();
+        rb.gravityScale = 0;
+
         imagemArara.SetActive(true);
         imagemMacaco.SetActive(false);
         imagemHumano.SetActive(false);
@@ -78,6 +87,8 @@ public class Transforma : MonoBehaviour
     {
         if (transformacaoAtual == 3) return;
 
+        rb.gravityScale = 1;
+
         imagemArara.SetActive(false);
         imagemMacaco.SetActive(true);
         imagemHumano.SetActive(false);
@@ -100,6 +111,10 @@ public class Transforma : MonoBehaviour
     private void VirarHumano(InputAction.CallbackContext context)
     {
         if (transformacaoAtual == 1) return;
+
+        escalada.DesagtivarEscalda();
+    
+        rb.gravityScale = 1;
 
         imagemArara.SetActive(false);
         imagemMacaco.SetActive(false);

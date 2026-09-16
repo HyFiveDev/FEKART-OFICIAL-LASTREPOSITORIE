@@ -38,7 +38,7 @@ public class MonkeyClimb : MonoBehaviour
     private float inputVertical;
     private float inputHorizontal;
     private bool isTouchingClimbable;
-    public bool isClimbing;
+    public bool isClimbing = false;
     private float defaultGravity;
 
     void Awake()
@@ -100,5 +100,13 @@ public class MonkeyClimb : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    public void DesagtivarEscalda()
+    {
+        isClimbing = false;
+        rb.gravityScale = defaultGravity;
+        rb.linearVelocity = new Vector2(inputHorizontal * moveSpeed, rb.linearVelocity.y);
+        print("desativou a escalada");
     }
 }
