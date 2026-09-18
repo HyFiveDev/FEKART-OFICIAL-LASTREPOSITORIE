@@ -1,9 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 public class TutorialAtivator : MonoBehaviour
 {
     [SerializeField] private TutorialManager tutorial;
     private bool jaAtivou = false; // Trava para impedir múltiplas chamadas seguidas
+    
+    [Header("Variáveis de encerramento")]
+    public float tempoEspera = 2f;
+    private WaitForSeconds espera = new WaitForSeconds(2f);
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,8 +21,17 @@ public class TutorialAtivator : MonoBehaviour
             jaAtivou = true; // Ativa a trava
             Debug.Log("Gatilho detectado no objeto: " + this.gameObject.name);
 
-            // Inicia o processo no gerenciador
             tutorial.IniciarTutorial();
+            StartCoroutine(esperarTempo());
+            Destroy(other.gameObject);
         }
+    }
+    
+    private IEnumerator esperarTempo()
+    {
+        espera = new WaitForSeconds(tempoEspera);
+        yield return espera;
+        tutorial.FinalizarTutorial();
+        jaAtivou = false;
     }
 }

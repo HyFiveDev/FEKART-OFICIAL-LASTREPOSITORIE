@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using System.Collections;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -9,13 +8,12 @@ public class TutorialManager : MonoBehaviour
     public TextMeshProUGUI tutorialText;
 
     [TextArea(2, 4)]
-    public List<string> mensagens; // Lista dinâmica (funciona para as 4 frases perfeitamente)
+    public List<string> mensagens;
 
     [Tooltip("Tempo em segundos que cada frase vai ficar visível na tela")]
     [SerializeField] private float tempoPorFrase = 4f;
 
     private int passoAtual = -1;
-    private Coroutine tutorialCoroutine;
 
     void Awake()
     {
@@ -37,36 +35,19 @@ public class TutorialManager : MonoBehaviour
         }
 
         tutorialPanel.SetActive(true);
-        passoAtual = -1; // Reseta o contador para começar do início da lista
-
-        // Inicia a sequência controlada por tempo
-        tutorialCoroutine = StartCoroutine(SequenciaDoTutorial());
+        ProximoPasso();
     }
 
-    private IEnumerator SequenciaDoTutorial()
+    private void ProximoPasso()
     {
-        // Roda o loop até passar por todas as frases da lista (inclusive as 4 atuais)
-        while (passoAtual < mensagens.Count - 1)
-        {
-            passoAtual++;
-            Debug.Log("Mostrando a frase do passo: " + passoAtual);
-            tutorialText.text = mensagens[passoAtual];
-
-            // Espera o tempo definido antes de passar para a próxima frase
-            yield return new WaitForSeconds(tempoPorFrase);
-        }
-
-        // Após passar por todas as frases da lista, fecha o painel
-        FinalizarTutorial();
+        passoAtual++;
+        tutorialText.text = mensagens[passoAtual];
     }
+    
 
     public void FinalizarTutorial()
     {
-        // Interrompe o temporizador se ele ainda estiver ativo
-        if (tutorialCoroutine != null)
-        {
-            StopCoroutine(tutorialCoroutine);
-        }
+
 
         if (tutorialText != null)
         {
