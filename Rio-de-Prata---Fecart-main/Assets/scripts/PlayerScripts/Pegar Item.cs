@@ -67,16 +67,17 @@ public class PegarItens : MonoBehaviour
     {
         itemCarregado.transform.SetParent(null);
         itemRb.simulated = true;
-
         itemCarregado = null;
         itemRb = null;
+        
     }
 
     void Arremessar()
     {
         itemCarregado.transform.SetParent(null);
         itemRb.simulated = true;
-
+  
+        
         float direcao = direita ? 1 : -1;
         itemRb.linearVelocity = Vector2.right * direcao * forcaArremesso;
 

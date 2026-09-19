@@ -9,9 +9,11 @@ public class KnockoutOnCapsuleHit : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private EnemyAnimScripts anim;
+    private Collider2D coll;
   
     private void Awake()
     {
+        coll = GetComponent<Collider2D>();
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
     }
@@ -30,16 +32,15 @@ public class KnockoutOnCapsuleHit : MonoBehaviour
     private void EntrarEmNocaute()
     {
         // Evita executar novamente
-        if (nocauteado)
-            return;
+        if (nocauteado) return;
 
         nocauteado = true;
-
+        
         // Para completamente o movimento físico
         if (rb != null)
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            rb.bodyType = RigidbodyType2D.Static;
+            coll.enabled = false;
         }
 
         // Ativa a animação de nocaute
