@@ -4,7 +4,7 @@ public class PlayerAnimScripts : MonoBehaviour
 {
     private SpriteRenderer sprite;
     [SerializeField] private Andar andar;
-
+    
     private Animator anim;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +19,8 @@ public class PlayerAnimScripts : MonoBehaviour
     {
         FlipSprite();
         CheckWalking();
+        CheckGrounded();
+        CheckYVelocity();
     }
 
     private void CheckWalking()
@@ -36,5 +38,15 @@ public class PlayerAnimScripts : MonoBehaviour
         {
             sprite.flipX = false;
         }
+    }
+
+    private void CheckGrounded()
+    {
+        anim.SetBool("isGrounded", andar.isGrounded);
+    }
+
+    private void CheckYVelocity()
+    {
+        anim.SetFloat("jumpVelocity", andar.rb.linearVelocity.y);
     }
 }

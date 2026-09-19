@@ -7,9 +7,8 @@ public class Andar : MonoBehaviour
     private InputAction move;
     private InputAction jump;
 
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private DebuffArara arara;
-
     public float speed = 5f;
     public float jumpForce = 10f;
     public bool isGrounded;
