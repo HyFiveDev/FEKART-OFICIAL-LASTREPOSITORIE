@@ -47,7 +47,7 @@ public class MacacoAnimScripts : MonoBehaviour
     }
 
     public void CheckClimbing(bool isClimbing)
-    {
+    { 
             anim.SetBool("isClimbing", isClimbing);
     }
 }
