@@ -28,6 +28,10 @@ public class TrocaDeCena : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void JogarDeNovo()
+    {
+        SceneManager.LoadScene("Inicio");
+    }
     void Update()
     {
         if (contagem.barracasDestruidas == 3)

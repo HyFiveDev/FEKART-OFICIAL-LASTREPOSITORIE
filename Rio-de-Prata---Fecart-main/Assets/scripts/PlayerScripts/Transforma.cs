@@ -62,7 +62,6 @@ public class Transforma : MonoBehaviour
         if (transformacaoAtual == 2) return;
 
         escalada.DesagtivarEscalda();
-        rb.gravityScale = 0;
 
         imagemArara.SetActive(true);
         imagemMacaco.SetActive(false);

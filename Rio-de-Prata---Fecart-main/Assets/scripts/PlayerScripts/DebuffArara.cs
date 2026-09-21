@@ -17,9 +17,9 @@ public class DebuffArara : MonoBehaviour
     public bool podeVoar = true;
     public bool voando;
 
-    private float cooldownAtual;
+    public float cooldownAtual;
     public float cooldownMax = 5f;
-    private float intervaloDeVerificacao = 0.5f;
+    public float intervaloDeVerificacao = 0.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     async Task Awake()
     {
