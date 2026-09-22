@@ -8,6 +8,7 @@ public class KnockoutOnCapsuleHit : MonoBehaviour
     [Header("Componentes")]
     private Rigidbody2D rb;
 
+    [SerializeField] private EstadoPedra pedra;
     [SerializeField] private EnemyAnimScripts anim;
     private Collider2D coll;
   
@@ -32,7 +33,7 @@ public class KnockoutOnCapsuleHit : MonoBehaviour
     private void EntrarEmNocaute()
     {
         // Evita executar novamente
-        if (nocauteado) return;
+        if (nocauteado || pedra.pedraArremessada == false) return;
 
         nocauteado = true;
         

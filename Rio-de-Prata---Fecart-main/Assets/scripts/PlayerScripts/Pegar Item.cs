@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PegarItens : MonoBehaviour
 {
+    [SerializeField] EstadoPedra pedra;
     [SerializeField] Transform pontoSegurar;
     [SerializeField] float forcaArremesso = 10f;
 
@@ -76,7 +77,7 @@ public class PegarItens : MonoBehaviour
     {
         itemCarregado.transform.SetParent(null);
         itemRb.simulated = true;
-  
+        pedra.pedraArremessada = true;
         
         float direcao = direita ? 1 : -1;
         itemRb.linearVelocity = Vector2.right * direcao * forcaArremesso;

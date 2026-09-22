@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 20446340855764df3920e3350150301a
+guid: c2f46bf670cee1e48b7d575ec66a3ed8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Minecraft
+  - Geist Pixel
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

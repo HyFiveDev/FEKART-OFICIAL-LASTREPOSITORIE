@@ -25,6 +25,7 @@ public class TrocaDeCena : MonoBehaviour
     {
         player.VoltarParaCheckpoint();
         telaMorte.SetActive(false);
+        contadorBarraca.SetActive(true);
         Time.timeScale = 1;
     }
 
