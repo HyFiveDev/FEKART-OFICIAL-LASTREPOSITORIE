@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: b70c56bc6f0764658bff3a17a90a33a2
+guid: c276ed9cfaddd4c4fbd74be57dfc06a9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 69592006095283058
-    second: human-jump cycle_0
+      213: -2337926801238779257
+    second: human-jump cycle V2_0
   - first:
-      213: -4572140659695097966
-    second: human-jump cycle_1
+      213: 8765294067463956953
+    second: human-jump cycle V2_1
   - first:
-      213: -2954388258566848156
-    second: human-jump cycle_2
+      213: 7890014474243153637
+    second: human-jump cycle V2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,57 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: human-jump cycle_0
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 73
-        width: 23
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 27324829f8d37f000800000000000000
-      internalID: 69592006095283058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: human-jump cycle_1
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 70
-        width: 24
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 297e0c35b4e7c80c0800000000000000
-      internalID: -4572140659695097966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: human-jump cycle_2
+      name: human-jump cycle V2_0
       rect:
         serializedVersion: 2
         x: 3
-        y: 8
-        width: 23
-        height: 42
+        y: 71
+        width: 25
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 461c9872887eff6d0800000000000000
-      internalID: -2954388258566848156
+      spriteID: 78a1c4d06f30e8fd0800000000000000
+      internalID: -2337926801238779257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: human-jump cycle V2_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 69
+        width: 28
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9270b838494a970800000000000000
+      internalID: 8765294067463956953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: human-jump cycle V2_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 7
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee14f97c56fe7d60800000000000000
+      internalID: 7890014474243153637
       vertices: []
       indices: 
       edges: []
@@ -198,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      human-jump cycle_0: 69592006095283058
-      human-jump cycle_1: -4572140659695097966
-      human-jump cycle_2: -2954388258566848156
+      human-jump cycle V2_0: -2337926801238779257
+      human-jump cycle V2_1: 8765294067463956953
+      human-jump cycle V2_2: 7890014474243153637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
