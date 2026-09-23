@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockoutOnCapsuleHit
   nocauteado: 0
-  pedra: {fileID: 0}
+  pedra: {fileID: 2092373372449359770, guid: 219f006e067957d4bbea375b9915143c, type: 3}
   anim: {fileID: 1984706390993397977}
 --- !u!95 &2631225159599195198
 Animator:
