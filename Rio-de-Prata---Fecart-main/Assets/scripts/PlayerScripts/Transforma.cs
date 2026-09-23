@@ -18,6 +18,7 @@ public class Transforma : MonoBehaviour
     [SerializeField] private FormaColisao Colisao;
     [SerializeField] private MonkeyClimb escalada;
     [SerializeField] private DebuffArara voar;
+    [SerializeField] private SliderVoo slider;
     private Rigidbody2D rb;
 
     [Header("Estado Atual")]
@@ -62,6 +63,7 @@ public class Transforma : MonoBehaviour
         if (transformacaoAtual == 2) return;
 
         escalada.DesagtivarEscalda();
+        slider.AlternarSlider(true);
 
         imagemArara.SetActive(true);
         imagemMacaco.SetActive(false);
@@ -86,7 +88,8 @@ public class Transforma : MonoBehaviour
     {
         if (transformacaoAtual == 3) return;
 
-        rb.gravityScale = 1;
+        slider.AlternarSlider(false);
+        rb.gravityScale = 1.5f;
 
         imagemArara.SetActive(false);
         imagemMacaco.SetActive(true);
@@ -111,9 +114,10 @@ public class Transforma : MonoBehaviour
     {
         if (transformacaoAtual == 1) return;
 
+        slider.AlternarSlider(false);
         escalada.DesagtivarEscalda();
     
-        rb.gravityScale = 1;
+        rb.gravityScale = 1.5f;
 
         imagemArara.SetActive(false);
         imagemMacaco.SetActive(false);

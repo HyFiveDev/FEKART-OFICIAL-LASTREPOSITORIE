@@ -5,6 +5,7 @@ public class SliderVoo : MonoBehaviour
 {
     [Header("Referências")]
     public Slider slider;
+    public GameObject araraPanel;
     public DebuffArara arara;
     [Header("Tempo de voo")]
     public float tempoMaximo = 5f;
@@ -39,4 +40,10 @@ public class SliderVoo : MonoBehaviour
         // Atualiza o Slider
         slider.value = tempoAtual;
     }
+
+    public void AlternarSlider(bool alternar)
+    {
+        araraPanel.SetActive(alternar);
+    }
+
 }

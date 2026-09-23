@@ -66,7 +66,7 @@ public class DebuffArara : MonoBehaviour
         if (!voando) return;
         print("Caindo");
         rb.linearVelocity = new Vector2(movimento.x * velocidade, -1f * velocidade);
-        rb.gravityScale = 1;
+        rb.gravityScale = 1.5f;
     }
 
     private IEnumerator VerificarPossibilidadeDeVoo()

@@ -52,12 +52,12 @@ public class AraraAnim : MonoBehaviour
 
     private void RotateSprite()
     {
-        if (andar.inputVertical > 0)
+        if (andar.inputVertical > 0 && !andar.isGrounded)
         {
             novaRotacao = Quaternion.Lerp(rotacaoAtual, rotacaoAlvoPos, 0.01f);
             transform.rotation = novaRotacao;
         }
-        else if (andar.inputVertical < 0)
+        else if (andar.inputVertical < 0 && !andar.isGrounded)
         {
             novaRotacao = Quaternion.Lerp(rotacaoAtual, rotacaoAlvoNeg, 0.01f);
             transform.rotation = novaRotacao;
@@ -71,12 +71,12 @@ public class AraraAnim : MonoBehaviour
 
     private void RotateSpriteFlipped()
     {
-        if (andar.inputVertical > 0)
+        if (andar.inputVertical > 0 && !andar.isGrounded)
         {
             novaRotacao = Quaternion.Lerp(rotacaoAtual, rotacaoAlvoNeg, 0.01f);
             transform.rotation = novaRotacao;
         }
-        else if (andar.inputVertical < 0)
+        else if (andar.inputVertical < 0 && !andar.isGrounded)
         {
             novaRotacao = Quaternion.Lerp(rotacaoAtual, rotacaoAlvoPos, 0.01f);
             transform.rotation = novaRotacao;
