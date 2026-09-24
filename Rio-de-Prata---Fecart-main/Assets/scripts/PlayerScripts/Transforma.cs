@@ -1,4 +1,3 @@
-//using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,13 +7,16 @@ public class Transforma : MonoBehaviour
     [SerializeField] private GameObject humano;
     [SerializeField] private GameObject arara;
     [SerializeField] private GameObject macaco;
-    
-    //imagens de transformação
+
+    // Imagens de transformação
     [SerializeField] private GameObject imagemArara;
     [SerializeField] private GameObject imagemMacaco;
     [SerializeField] private GameObject imagemHumano;
 
-    [Header("Referencia de códigos")]
+    [Header("Efeitos Visuais")]
+    [SerializeField] private ParticleSystem fumacaParticula;
+
+    [Header("Referência de Códigos")]
     [SerializeField] private FormaColisao Colisao;
     [SerializeField] private MonkeyClimb escalada;
     [SerializeField] private DebuffArara voar;
@@ -55,12 +57,30 @@ public class Transforma : MonoBehaviour
     }
 
     // =========================
+    // EFEITO DE FUMAÇA
+    // =========================
+    private void TocarFumaca()
+    {
+        if (fumacaParticula != null)
+        {
+            fumacaParticula.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            fumacaParticula.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Atenção: O campo 'Fumaca Particula' não foi atribuído no Inspector!", this);
+        }
+    }
+
+    // =========================
     // ARARA
     // =========================
 
-    private void VirarArara(InputAction.CallbackContext context)
+    public void VirarArara(InputAction.CallbackContext context)
     {
         if (transformacaoAtual == 2) return;
+
+        TocarFumaca();
 
         escalada.DesagtivarEscalda();
         slider.AlternarSlider(true);
@@ -68,7 +88,7 @@ public class Transforma : MonoBehaviour
         imagemArara.SetActive(true);
         imagemMacaco.SetActive(false);
         imagemHumano.SetActive(false);
-        
+
         humano.SetActive(false);
         macaco.SetActive(false);
         arara.SetActive(true);
@@ -88,13 +108,15 @@ public class Transforma : MonoBehaviour
     {
         if (transformacaoAtual == 3) return;
 
+        TocarFumaca();
+
         slider.AlternarSlider(false);
         rb.gravityScale = 1.5f;
 
         imagemArara.SetActive(false);
         imagemMacaco.SetActive(true);
         imagemHumano.SetActive(false);
-        
+
         humano.SetActive(false);
         arara.SetActive(false);
         macaco.SetActive(true);
@@ -102,7 +124,7 @@ public class Transforma : MonoBehaviour
         transformacaoAtual = 3;
 
         Colisao.FormaMacaco();
-        
+
         Debug.Log("Transformação Atual = MACACO");
     }
 
@@ -114,15 +136,17 @@ public class Transforma : MonoBehaviour
     {
         if (transformacaoAtual == 1) return;
 
+        TocarFumaca();
+
         slider.AlternarSlider(false);
         escalada.DesagtivarEscalda();
-    
+
         rb.gravityScale = 1.5f;
 
         imagemArara.SetActive(false);
         imagemMacaco.SetActive(false);
         imagemHumano.SetActive(true);
-        
+
         humano.SetActive(true);
         arara.SetActive(false);
         macaco.SetActive(false);
@@ -130,7 +154,7 @@ public class Transforma : MonoBehaviour
         transformacaoAtual = 1;
 
         Colisao.FormaHumano();
-        
+
         Debug.Log("Transformação Atual = HUMANO");
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.Assertions.Must;
 
 public class AraraAnim : MonoBehaviour
 {
+    public bool flipped = false;
     private SpriteRenderer sprite;
     [SerializeField] private Andar andar;
     private Quaternion rotacaoAtual;
@@ -43,10 +44,12 @@ public class AraraAnim : MonoBehaviour
         if (andar.inputHorizontal < 0)
         {
             sprite.flipX = true;
+            flipped = true;
         }
         else if (andar.inputHorizontal > 0)
         {
             sprite.flipX = false;
+            flipped = false;
         }
     }
 

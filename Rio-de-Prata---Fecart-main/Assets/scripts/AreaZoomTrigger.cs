@@ -1,5 +1,6 @@
-using UnityEngine;
 using Unity.Cinemachine; // Se estiver usando uma versão mais antiga do Cinemachine, mude para "using Cinemachine;"
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AreaZoomTrigger : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class AreaZoomTrigger : MonoBehaviour
     [Tooltip("Arraste a sua Cinemachine Virtual Camera para cá")]
     public CinemachineCamera virtualCamera;
     [SerializeField] private DebuffArara arara;
+    [SerializeField] private Transforma transformar;
 
     [Header("Configurações de Zoom")]
     [Tooltip("Tamanho do zoom normal da câmera")]

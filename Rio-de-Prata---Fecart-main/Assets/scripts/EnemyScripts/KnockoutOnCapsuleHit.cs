@@ -8,14 +8,13 @@ public class KnockoutOnCapsuleHit : MonoBehaviour
     [Header("Componentes")]
     private Rigidbody2D rb;
 
-    [SerializeField] private EstadoPedra pedra;
+    private EstadoPedra pedra;
     [SerializeField] private EnemyAnimScripts anim;
     private Collider2D coll;
   
     private void Awake()
     {
         coll = GetComponent<Collider2D>();
-        if (rb == null)
             rb = GetComponent<Rigidbody2D>();
     }
 
@@ -26,26 +25,35 @@ public class KnockoutOnCapsuleHit : MonoBehaviour
 
         if (capsule != null)
         {
+            print("Colisão funcionou");
             EntrarEmNocaute();
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+            pedra = collision.gameObject.GetComponent<EstadoPedra>();
+    }
+
     private void EntrarEmNocaute()
     {
-        // Evita executar novamente
+        print("nocaute chamado " + pedra.pedraArremessada );
         if (nocauteado || pedra.pedraArremessada == false) return;
+        print("passou do if");
 
         nocauteado = true;
-        
-        // Para completamente o movimento físico
+
+         
         if (rb != null)
         {
+            print("collider desligado");
             rb.bodyType = RigidbodyType2D.Static;
             coll.enabled = false;
         }
 
         // Ativa a animação de nocaute
             anim.Atordoar(nocauteado);
+        print("inimigo nocauteado");
         
 
         // Desativa os scripts que controlam o personagem

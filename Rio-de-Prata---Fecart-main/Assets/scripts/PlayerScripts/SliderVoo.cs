@@ -5,45 +5,27 @@ public class SliderVoo : MonoBehaviour
 {
     [Header("Referências")]
     public Slider slider;
-    public GameObject araraPanel;
+    public GameObject sliderPanel;
     public DebuffArara arara;
-    [Header("Tempo de voo")]
-    public float tempoMaximo = 5f;
-
-    private float tempoAtual;
 
     void Start()
     {
-        tempoAtual = tempoMaximo;
+        // Configura o Slider
+        slider.minValue = 0;
+        slider.maxValue = arara.cooldownMax;
 
-        slider.maxValue = tempoMaximo;
-        slider.value = tempoAtual;
+        // Começa cheio
+        slider.value = arara.cooldownMax;
     }
 
     void Update()
     {
-        // Enquanto estiver voando
-        if (arara.voando)
-        {
-            tempoAtual -= Time.deltaTime;
-
-            if (tempoAtual < 0)
-                tempoAtual = 0;
-        }
-
-        // Quando estiver no chão
-        if (!arara.voando)
-        {
-            tempoAtual = tempoMaximo;
-        }
-
-        // Atualiza o Slider
-        slider.value = tempoAtual;
+        // O Slider acompanha o cooldownAtual
+        slider.value = arara.cooldownAtual;
     }
 
     public void AlternarSlider(bool alternar)
     {
-        araraPanel.SetActive(alternar);
+        sliderPanel.SetActive(alternar);
     }
-
 }

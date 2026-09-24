@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 003e05b2deca042d1b2161f944f9922a
+guid: b6d40f4be2a38944381ca4927660cd24
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3442640408142137070
-    second: inimigoEspecial_0
+      213: 4953240370261422103
+    second: inimigoEspecial 1_0
   - first:
-      213: -1635852434092558471
-    second: inimigoEspecial_1
+      213: -2206498620525898799
+    second: inimigoEspecial 1_1
+  - first:
+      213: 1621248875342995142
+    second: inimigoEspecial 1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +103,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -116,45 +119,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inimigoEspecial_0
+      name: inimigoEspecial 1_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 27
-        height: 59
+        x: 0
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee6c7b81637b6cf20800000000000000
-      internalID: 3442640408142137070
+      spriteID: 7107e849fd17db440800000000000000
+      internalID: 4953240370261422103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inimigoEspecial_1
+      name: inimigoEspecial 1_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 28
-        height: 59
+        x: 32
+        y: 64
+        width: 32
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97774f8d0e84c49e0800000000000000
-      internalID: -1635852434092558471
+      spriteID: 1d31a26f131f061e0800000000000000
+      internalID: -2206498620525898799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inimigoEspecial 1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce125b2345df7610800000000000000
+      internalID: 1621248875342995142
       vertices: []
       indices: 
       edges: []
@@ -163,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e28c2f2ede45dc34781e0ef6ff30bf31
     internalID: 0
     vertices: []
     indices: 
@@ -171,10 +196,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      inimigoEspecial_0: 3442640408142137070
-      inimigoEspecial_1: -1635852434092558471
+      inimigoEspecial 1_0: 4953240370261422103
+      inimigoEspecial 1_1: -2206498620525898799
+      inimigoEspecial 1_2: 1621248875342995142
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

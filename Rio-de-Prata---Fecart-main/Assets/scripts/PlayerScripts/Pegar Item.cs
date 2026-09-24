@@ -3,21 +3,23 @@ using UnityEngine.InputSystem;
 
 public class PegarItens : MonoBehaviour
 {
-    [SerializeField] EstadoPedra pedra;
+    private EstadoPedra pedra;
     [SerializeField] Transform pontoSegurar;
     [SerializeField] float forcaArremesso = 10f;
-
+    [SerializeField] private Andar andar;
     InputSystem_Actions input;
+    private SpriteRenderer flip;
     GameObject itemAlcance;
     GameObject itemCarregado;
     Rigidbody2D itemRb;
+    private int direcao;
 
     Vector3 posicaoOriginal;
-    bool direita = true;
 
     void Awake()
     {
         input = new InputSystem_Actions();
+        flip = GetComponent<SpriteRenderer>();
 
         if (pontoSegurar)
             posicaoOriginal = pontoSegurar.localPosition;
@@ -53,6 +55,7 @@ public class PegarItens : MonoBehaviour
     {
         itemCarregado = itemAlcance;
         itemRb = itemCarregado.GetComponent<Rigidbody2D>();
+        pedra = itemAlcance.GetComponent<EstadoPedra>();
 
         if (!itemRb) return;
 
@@ -70,7 +73,7 @@ public class PegarItens : MonoBehaviour
         itemRb.simulated = true;
         itemCarregado = null;
         itemRb = null;
-        
+        pedra = null;
     }
 
     void Arremessar()
@@ -78,23 +81,21 @@ public class PegarItens : MonoBehaviour
         itemCarregado.transform.SetParent(null);
         itemRb.simulated = true;
         pedra.pedraArremessada = true;
-        
-        float direcao = direita ? 1 : -1;
-        itemRb.linearVelocity = Vector2.right * direcao * forcaArremesso;
+
+        if (!flip.flipX)
+        {
+            direcao = 1;
+            itemRb.linearVelocity = Vector2.right * direcao * forcaArremesso;
+        }
+        else if (flip.flipX)
+        {
+            direcao = -1;
+            itemRb.linearVelocity = Vector2.right * direcao * forcaArremesso;
+        }
 
         itemCarregado = null;
         itemRb = null;
-    }
-
-    public void AtualizarFlip(bool paraDireita)
-    {
-        direita = paraDireita;
-
-        if (!pontoSegurar) return;
-
-        Vector3 pos = posicaoOriginal;
-        pos.x = Mathf.Abs(pos.x) * (direita ? 1 : -1);
-        pontoSegurar.localPosition = pos;
+        pedra = null;
     }
 
     void OnTriggerEnter2D(Collider2D other)

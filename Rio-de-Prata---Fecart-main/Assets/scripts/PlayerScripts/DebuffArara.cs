@@ -50,12 +50,11 @@ public class DebuffArara : MonoBehaviour
     {
         if (!andar.isGrounded && podeVoar) Voar();
         else if (!podeVoar && voando) Cair();
-        print(cooldownAtual);
     }
 
     private void Voar()
     {
-        print("voando");
+
         voando = true;
         rb.gravityScale = 0;
         rb.linearVelocity = movimento * velocidade;

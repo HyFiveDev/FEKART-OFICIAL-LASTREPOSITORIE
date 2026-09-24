@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,14 +16,15 @@ public class InimigoEspecial : MonoBehaviour
     public int postoDestruido = 0;
 
     [Header("Imagens")]
-    public GameObject imagem1;
-    public GameObject imagem2;
+    public GameObject inimigoTras;
+    public GameObject imagemFrente;
+    public GameObject imagemAtirando;
 
     [Header("Colliders")] private Collider2D collider;
 
     [Header("Timer")]
     public float tempoTroca = 15f;
-
+    private bool jaIniciou;
     private bool perseguindo = false;
 
     // Controla qual imagem/collider está ativo
@@ -35,6 +37,7 @@ public class InimigoEspecial : MonoBehaviour
         collider = GetComponent<Collider2D>();
         timer = tempoTroca;
         AtualizarEstado();
+        imagemAtirando.SetActive(false);
     }
 
     void Update()
@@ -48,29 +51,13 @@ public class InimigoEspecial : MonoBehaviour
             AtualizarEstado();
             timer = tempoTroca;
         }
-
-        // PERSEGUIÇÃO
-        if (perseguindo)
-        {
-            Vector3 posicaoDestino = new Vector3(
-                player.position.x,
-                transform.position.y,
-                transform.position.z
-            );
-
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                posicaoDestino,
-                velocidade * Time.deltaTime
-            );
-        }
     }
 
     void AtualizarEstado()
     {
         // Alterna imagens
-        imagem1.SetActive(usandoImagem1);
-        imagem2.SetActive(!usandoImagem1);
+        inimigoTras.SetActive(usandoImagem1);
+        imagemFrente.SetActive(!usandoImagem1);
 
         // Alterna colliders
         collider.enabled = usandoImagem1;
@@ -88,10 +75,24 @@ public class InimigoEspecial : MonoBehaviour
     {
         if (!playerScript.protegido && other.CompareTag("Player"))
         {
+            if (jaIniciou) return;
             Debug.Log("GAME OVER");
-
-            // Troque pelo nome da sua cena de Game Over
-            morte.Morte();
+            StartCoroutine(Morte());
+            StopCoroutine(Morte());
         }
+    }
+
+    private IEnumerator Morte()
+    {
+        jaIniciou = true;
+
+        imagemAtirando.SetActive(true);
+        imagemFrente.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        morte.Morte();
+        imagemAtirando.SetActive(false);
+        imagemFrente.SetActive (true);
+        jaIniciou = false;
+
     }
 }
