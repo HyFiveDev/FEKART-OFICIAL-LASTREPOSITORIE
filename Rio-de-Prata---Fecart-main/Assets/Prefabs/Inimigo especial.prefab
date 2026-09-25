@@ -238,7 +238,7 @@ MonoBehaviour:
   inimigoTras: {fileID: 1775430547448141754}
   imagemFrente: {fileID: 1178528063655373187}
   imagemAtirando: {fileID: 7405098907898335671}
-  tempoTroca: 5
+  tempoTroca: 2
 --- !u!61 &8332239504771712343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 10.58}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -283,7 +283,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.268275, y: 4}
+  m_Size: {x: 10.268275, y: 26.58}
   m_EdgeRadius: 0
 --- !u!1 &7405098907898335671
 GameObject:

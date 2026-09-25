@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockoutOnCapsuleHit
   nocauteado: 0
-  pedra: {fileID: 2092373372449359770, guid: 219f006e067957d4bbea375b9915143c, type: 3}
   anim: {fileID: 1984706390993397977}
 --- !u!95 &2631225159599195198
 Animator:
@@ -208,7 +207,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5625, y: 3.0625}
+  m_Size: {x: 1.01, y: 3.0625}
   m_EdgeRadius: 0
 --- !u!50 &452620910290744914
 Rigidbody2D:

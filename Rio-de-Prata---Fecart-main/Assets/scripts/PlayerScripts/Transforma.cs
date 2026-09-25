@@ -21,6 +21,7 @@ public class Transforma : MonoBehaviour
     [SerializeField] private MonkeyClimb escalada;
     [SerializeField] private DebuffArara voar;
     [SerializeField] private SliderVoo slider;
+    [SerializeField] private Andar andar;
     private Rigidbody2D rb;
 
     [Header("Estado Atual")]
@@ -97,6 +98,8 @@ public class Transforma : MonoBehaviour
 
         Colisao.FormaArara();
 
+        andar.speed = 3.5f;
+
         Debug.Log("Transformação Atual = ARARA");
     }
 
@@ -124,6 +127,8 @@ public class Transforma : MonoBehaviour
         transformacaoAtual = 3;
 
         Colisao.FormaMacaco();
+
+        andar.speed = 4f;
 
         Debug.Log("Transformação Atual = MACACO");
     }
@@ -154,6 +159,8 @@ public class Transforma : MonoBehaviour
         transformacaoAtual = 1;
 
         Colisao.FormaHumano();
+
+        andar.speed = 11f;
 
         Debug.Log("Transformação Atual = HUMANO");
     }

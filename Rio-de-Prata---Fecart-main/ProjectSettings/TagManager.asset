@@ -8,6 +8,8 @@ TagManager:
   - Item
   - Esconderijo1
   - Tutorial
+  - Audio
+  - Totem
   layers:
   - Default
   - TransparentFX
