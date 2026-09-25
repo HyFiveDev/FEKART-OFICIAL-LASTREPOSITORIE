@@ -60,7 +60,6 @@ public class InimigoEspecial : MonoBehaviour
         imagemFrente.SetActive(!usandoImagem1);
 
         // Alterna colliders
-        collider.enabled = usandoImagem1;
         collider.enabled = !usandoImagem1;
     }
 
